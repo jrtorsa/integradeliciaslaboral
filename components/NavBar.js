@@ -21,6 +21,7 @@ const NavBar = () => {
         a {
           padding: 0 30px 0 30px;
           color: #e3170a;
+          text-decoration: none;
         }
         .container {
           align-items: center;
