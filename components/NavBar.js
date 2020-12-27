@@ -1,27 +1,34 @@
 import Link from "next/link";
+import { useRouter } from 'next/router';
+
+const links = [
+  {label:'Integra Delicias Laboral', href: '/' },
+  {label:'Nosotros', href: '/about-us' },
+  {label:'Servicios', href: '/services' },
+  {label:'Contacto', href: '/contact' },
+]
 
 const NavBar = () => {
+  const router = useRouter();
   return (
     <>
       <div className="container">
-        <Link href="/">
-          <a>Integra Delicias Delicias</a>
-        </Link>
-        <Link href="/about-us">
-          <a>Nosotros</a>
-        </Link>
-        <Link href="/services">
-          <a>Servicios</a>
-        </Link>
-        <Link href="/contact">
-          <a>Contacto</a>
-        </Link>
+          {links.map(({label, href}, index) => (
+            <p key={index} className={router.route === href ? 'selected' : ''}>
+              <Link href={href}>
+                <a>{label}</a>
+              </Link>
+            </p>
+          ))}
       </div>
       <style jsx>{`
         a {
           padding: 0 30px 0 30px;
           color: #e3170a;
           text-decoration: none;
+        }
+        p.selected {
+          text-decoration: underline;
         }
         .container {
           align-items: center;
